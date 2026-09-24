@@ -1,0 +1,16 @@
+# Illustrates that helm_config_file_path values take priority over this
+# module's own inputs: from-file.tf sets nfd_enabled = true on the module,
+# but this file overrides it to false.
+nfd:
+  enabled: false
+
+# Any other chart value not exposed as a first-class module variable can be
+# set here too, e.g. sizing the operator controller's own resource requests:
+operator:
+  resources:
+    limits:
+      cpu: 500m
+      memory: 256Mi
+    requests:
+      cpu: 10m
+      memory: 64Mi
